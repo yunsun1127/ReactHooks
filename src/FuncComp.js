@@ -15,22 +15,42 @@ const FuncComp = (props) => {
   // let setDate = dateState[1];
 
   // side effect
+  useEffect(
+    function () {
+      console.log(
+        "%cfunc => useEffect _date (componentDidMount & componentDidUpdate) " +
+          ++funId,
+        funcStyle
+      );
+      document.title = _date;
+
+      // Effect with CleanUp
+      return function CleanUp() {
+        console.log(
+          "%cfunc => useEffect return (componentDidMount & componentDidUpdate) " +
+            ++funId,
+          funcStyle
+        );
+      };
+    },
+    [_date]
+  );
+
   useEffect(function () {
     console.log(
-      "%cfunc => useEffect (componentDidMount & componentDidUpdate) " + ++funId,
+      "%cfunc => useEffect (componentDidMount) " + ++funId,
       funcStyle
     );
-    document.title = number + ` : ` + _date;
+    document.title = number;
 
     // Effect with CleanUp
     return function CleanUp() {
       console.log(
-        "%cfunc => useEffect return (componentDidMount & componentDidUpdate) " +
-          ++funId,
+        "%cfunc => useEffect return (componentWillUnMount) " + ++funId,
         funcStyle
       );
     };
-  });
+  }, []);
 
   console.log("%cfunc => render " + ++funId, funcStyle);
   return (
