@@ -21,6 +21,15 @@ const FuncComp = (props) => {
       funcStyle
     );
     document.title = number + ` : ` + _date;
+
+    // Effect with CleanUp
+    return function CleanUp() {
+      console.log(
+        "%cfunc => useEffect return (componentDidMount & componentDidUpdate) " +
+          ++funId,
+        funcStyle
+      );
+    };
   });
 
   console.log("%cfunc => render " + ++funId, funcStyle);
