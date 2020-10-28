@@ -23,7 +23,7 @@ class ClassComp extends React.Component {
         <p>Date : {this.state.date}</p>
         <input
           type="button"
-          value="randomNumber"
+          value="random"
           onClick={() => {
             this.setState({
               number: Math.random(),
@@ -32,7 +32,7 @@ class ClassComp extends React.Component {
         ></input>
         <input
           type="button"
-          value="randomDate"
+          value="date"
           onClick={() => {
             this.setState({
               date: new Date().toString(),

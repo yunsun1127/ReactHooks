@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+let funcStyle = "color:blue";
+let funId = 0;
 
 const FuncComp = (props) => {
   const [number, setNumber] = useState(props.initNumber);
@@ -11,6 +14,16 @@ const FuncComp = (props) => {
   // let _date = dateState[0];
   // let setDate = dateState[1];
 
+  // side effect
+  useEffect(function () {
+    console.log(
+      "%cfunc => useEffect (componentDidMount & componentDidUpdate) " + ++funId,
+      funcStyle
+    );
+    document.title = number + ` : ` + _date;
+  });
+
+  console.log("%cfunc => render " + ++funId, funcStyle);
   return (
     <div className="container">
       <h2>function style component</h2>
@@ -18,14 +31,14 @@ const FuncComp = (props) => {
       <p>Date : {_date}</p>
       <input
         type="button"
-        value="randomNumber"
+        value="random"
         onClick={() => {
           setNumber(Math.random());
         }}
       ></input>
       <input
         type="button"
-        value="randomDate"
+        value="date"
         onClick={() => {
           setDate(new Date().toString());
         }}
